@@ -18,7 +18,7 @@ Vue.component('new-comment-form', {
   },
   methods: {
     onSubmit: function() {
-      console.log('onSubmit', this.form);
+      console.log('onSubmit', this.form)
     }
   }
 })
@@ -45,13 +45,17 @@ Vue.component('comments-item', {
       <img class="gravatar_img" :src="gravatar_link" />
       <div>
         <strong>{{ email }}</strong>
-        <p>{{ message }}</p>
+        <p v-html="html_message"></p>
       </div>
     </div>
   `,
   computed: {
-    gravatar_link: function() {
-      return `https://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50?s=50`
+    gravatar_link: function(data) {
+      var gravatar_hash = md5(data.email.trim().toLowerCase())
+      return `https://www.gravatar.com/avatar/${gravatar_hash}?s=50`
+    },
+    html_message: function(data) {
+      return data.message.replace("\n", '<br>')
     }
   }
 })
@@ -72,6 +76,6 @@ var app = new Vue({
     ]
   },
   mounted: function() {
-    console.log('Vue is ready');
+    console.log('Vue is ready')
   }
-});
+})
