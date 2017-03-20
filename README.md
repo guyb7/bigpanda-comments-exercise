@@ -1,6 +1,9 @@
 # Reactive Comments (BigPanda Home exercise)
 A Node/Vue/Redis app that shows a comments snippet.
 
+## How it looks
+![alt tag](public/screenshot.png)
+
 ## Install
 * clone this repo
 * install yarn (or npm)
