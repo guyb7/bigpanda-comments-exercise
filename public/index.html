@@ -8,7 +8,7 @@
 </head>
 <body>
   <div id="app">
-    <new-comment-form></new-comment-form>
+    <new-comment-form :add-comment="addComment"></new-comment-form>
     <comments-feed :comments="comments" :is_fetching="is_fetching"></comments-feed>
   </div>
   <script src="/app.js"></script>

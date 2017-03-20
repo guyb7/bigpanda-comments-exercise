@@ -1,15 +1,17 @@
 Vue.component('new-comment-form', {
+  props: ['add-comment'],
   template: `
     <form class="submit-comment" @submit.prevent="onSubmit">
-      <input v-model="form.email" type="email" placeholder="Email">
-      <textarea v-model="form.message" placeholder="Message"></textarea>
+      <input v-model="form.email" type="email" placeholder="Email" :disabled="is_submitting">
+      <textarea v-model="form.message" placeholder="Message" :disabled="is_submitting"></textarea>
       <div class="text-right">
-        <button type="submit">Submit</button>
+        <button type="submit" :disabled="is_submitting">Submit</button>
       </div>
     </form>
   `,
   data: function() {
     return {
+      is_submitting: false,
       form: {
         email: '',
         message: ''
@@ -18,7 +20,15 @@ Vue.component('new-comment-form', {
   },
   methods: {
     onSubmit: function() {
-      console.log('onSubmit', this.form)
+      this.is_submitting = true
+      var comment = Object.assign({}, this.form)
+      axios.post('/api/add-comment', comment)
+        .then(function (response) {
+          this.is_submitting = false
+          this.form.email = ''
+          this.form.message = ''
+          this.addComment(comment)
+        }.bind(this))
     }
   }
 })
@@ -76,6 +86,11 @@ var app = new Vue({
   data: {
     comments: [],
     is_fetching: false
+  },
+  methods: {
+    addComment(comment) {
+      this.comments.push(comment)
+    }
   },
   mounted: function() {
     this.is_fetching = true
