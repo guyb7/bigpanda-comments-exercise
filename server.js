@@ -1,6 +1,7 @@
 const express = require('express')
 const app = express()
 const bodyParser = require('body-parser')
+const CommentsFeed = require('./Models/CommentsFeed')
 
 // Serve static files
 app.use(express.static('public'))
@@ -11,27 +12,21 @@ app.get('/', (req, res) => {
 // API endpoints
 app.get('/api/feed', (req, res) => {
   setTimeout(() => {
-    res.json({
-      comments: []
-      // comments: [
-      //   {
-      //     id: 'a1b2c3',
-      //     email: 'elik@bigpanda.io',
-      //     message: 'Hello there'
-      //   }, {
-      //     id: 'a1b2d4',
-      //     email: 'Shai@bigpanda.io',
-      //     message: 'Good!'
-      //   }
-      // ]
+    CommentsFeed.get((err, comments) => {
+      res.json({
+        comments: comments
+      })
     })
   }, 800)
 })
 
 app.post('/api/add-comment', bodyParser.json(), (req, res) => {
   setTimeout(() => {
-    console.log(req.body);
-    res.json({ success: true })
+    CommentsFeed.add(req.body, (err) => {
+      res.json({
+        success: err === null
+      })
+    })
   }, 400)
 })
 
