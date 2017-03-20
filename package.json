@@ -1,0 +1,19 @@
+{
+  "name": "bigpanda-comments-exercise",
+  "version": "1.0.0",
+  "description": "Home exercise for BigPanda",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/guyb7/bigpanda-comments-exercise.git"
+  },
+  "author": "Guy Brukhis <guy.br7@gmail.com> (http://guyb7.com/)",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/guyb7/bigpanda-comments-exercise/issues"
+  },
+  "homepage": "https://github.com/guyb7/bigpanda-comments-exercise#readme"
+}
