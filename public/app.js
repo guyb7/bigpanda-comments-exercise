@@ -63,19 +63,12 @@ Vue.component('comments-item', {
 var app = new Vue({
   el: '#app',
   data: {
-    comments: [
-      {
-        id: 'a1b2c3',
-        email: 'elik@bigpanda.io',
-        message: 'Hello there'
-      }, {
-        id: 'a1b2d4',
-        email: 'Shai@bigpanda.io',
-        message: 'Good!'
-      }
-    ]
+    comments: []
   },
   mounted: function() {
-    console.log('Vue is ready')
+    axios.get('/api/feed')
+      .then(function (response) {
+        app.comments = response.data.comments
+      })
   }
 })
