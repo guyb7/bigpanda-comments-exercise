@@ -38,13 +38,32 @@ Vue.component('comments-feed', {
   template: `
     <div class="comments-feed">
       <input v-model="filter" type="text" placeholder="Filter">
-      <comments-item v-for="comment in comments" :email="comment.email" :message="comment.message" :key="comment.id"></comments-item>
+      <comments-item v-for="comment in filtered_comments" :email="comment.email" :message="comment.message" :key="comment.id"></comments-item>
       <spinner v-if="is_fetching"></spinner>
     </div>
   `,
   data: function() {
     return {
       filter: ''
+    }
+  },
+  computed: {
+    empty_comments: function(data) {
+      return data.comments.length === 0
+    },
+    filtered_comments: function(data) {
+      if (data.filter.length === 0) {
+        return data.comments
+      } else {
+        return arrayFilter(data.comments, function(comment) {
+          var pattern = new RegExp(data.filter, 'i')
+          if (comment.email.match(pattern) || comment.message.match(pattern)) {
+            return true
+          } else {
+            return false
+          }
+        })
+      }
     }
   }
 })
