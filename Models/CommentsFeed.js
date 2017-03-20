@@ -20,5 +20,11 @@ module.exports = {
     redisClient.SADD(redis_set_name, JSON.stringify(comment), (err) => {
       cb(err)
     })
+  },
+
+  clear(cb) {
+    redisClient.DEL(redis_set_name, (err) => {
+      cb(err)
+    })
   }
 }

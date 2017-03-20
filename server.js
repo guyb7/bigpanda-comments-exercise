@@ -30,6 +30,14 @@ app.post('/api/add-comment', bodyParser.json(), (req, res) => {
   }, 400)
 })
 
+app.get('/api/feed/destroy', (req, res) => {
+  CommentsFeed.clear((err) => {
+    res.json({
+      success: err === null
+    })
+  })
+})
+
 app.listen(3000, () => {
   console.log('BigPanda comments is listening on port 3000')
 })

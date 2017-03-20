@@ -1,5 +1,5 @@
 # Reactive Comments (BigPanda Home exercise)
-A Node/Vue.js app that shows a comments snippet.
+A Node/Vue/Redis app that shows a comments snippet.
 
 ## Install
 * clone this repo
@@ -8,3 +8,6 @@ A Node/Vue.js app that shows a comments snippet.
 * install and run redis
 * run `yarn install`
 * run `yarn start`
+
+## Delete all comments
+Make a GET request to `http://localhost:3000/api/feed/destroy`
