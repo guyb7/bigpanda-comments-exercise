@@ -24,11 +24,12 @@ Vue.component('new-comment-form', {
 })
 
 Vue.component('comments-feed', {
-  props: ['comments'],
+  props: ['comments', 'is_fetching'],
   template: `
     <div class="comments-feed">
       <input v-model="filter" type="text" placeholder="Filter">
       <comments-item v-for="comment in comments" :email="comment.email" :message="comment.message" :key="comment.id"></comments-item>
+      <spinner v-if="is_fetching"></spinner>
     </div>
   `,
   data: function() {
@@ -60,14 +61,27 @@ Vue.component('comments-item', {
   }
 })
 
+Vue.component('spinner', {
+  template: `
+    <div class="spinner">
+      <div class="bounce1"></div>
+      <div class="bounce2"></div>
+      <div class="bounce3"></div>
+    </div>
+  `
+})
+
 var app = new Vue({
   el: '#app',
   data: {
-    comments: []
+    comments: [],
+    is_fetching: false
   },
   mounted: function() {
+    this.is_fetching = true
     axios.get('/api/feed')
       .then(function (response) {
+        app.is_fetching = false
         app.comments = response.data.comments
       })
   }
