@@ -86,7 +86,7 @@ Vue.component('comments-item', {
       return `https://www.gravatar.com/avatar/${gravatar_hash}?s=50`
     },
     html_message: function(data) {
-      return data.message.replace("\n", '<br>')
+      return data.message.replace(/\n/g, '<br>')
     }
   }
 })
