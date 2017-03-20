@@ -12,17 +12,18 @@ app.get('/', (req, res) => {
 app.get('/api/feed', (req, res) => {
   setTimeout(() => {
     res.json({
-      comments: [
-        {
-          id: 'a1b2c3',
-          email: 'elik@bigpanda.io',
-          message: 'Hello there'
-        }, {
-          id: 'a1b2d4',
-          email: 'Shai@bigpanda.io',
-          message: 'Good!'
-        }
-      ]
+      comments: []
+      // comments: [
+      //   {
+      //     id: 'a1b2c3',
+      //     email: 'elik@bigpanda.io',
+      //     message: 'Hello there'
+      //   }, {
+      //     id: 'a1b2d4',
+      //     email: 'Shai@bigpanda.io',
+      //     message: 'Good!'
+      //   }
+      // ]
     })
   }, 800)
 })

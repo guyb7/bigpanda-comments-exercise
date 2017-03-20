@@ -55,6 +55,11 @@ input, textarea {
   flex-direction: column;
   padding: 20px;
 }
+.empty-comments {
+  font-size: 14px;
+  color: #999;
+  text-align: center;
+}
 
 .comments-item {
   display: flex;

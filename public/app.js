@@ -40,6 +40,7 @@ Vue.component('comments-feed', {
       <input v-model="filter" type="text" placeholder="Filter">
       <comments-item v-for="comment in filtered_comments" :email="comment.email" :message="comment.message" :key="comment.id"></comments-item>
       <spinner v-if="is_fetching"></spinner>
+      <p v-else-if="empty_comments" class="empty-comments">No comments yet!</p>
     </div>
   `,
   data: function() {
