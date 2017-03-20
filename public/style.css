@@ -11,4 +11,67 @@ html, body {
 
 body {
   background-color: #f9f9f9;
+  display: flex;
+  justify-content: center;
+}
+
+#app {
+  max-width: 500px;
+  border: 1px solid #efefef;
+  margin-top: 100px;
+  background-color: #fff;
+}
+
+.text-right {
+  text-align: right;
+}
+input, textarea {
+  padding: 10px;
+  border: 1px solid #c7c7c7;
+  min-width: 260px;
+  margin-bottom: 20px;
+}
+
+.submit-comment {
+  background-color: #efefef;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+}
+.submit-comment > textarea {
+  height: 100px;
+}
+.submit-comment button {
+  background-color: #3fa8e2;
+  color: #fff;
+  border: 0 solid transparent;
+  padding: 7px 12px;
+  text-transform: uppercase;
+  border-radius: 4px;
+}
+
+.comments-feed {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+}
+
+.comments-item {
+  display: flex;
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+.gravatar_img {
+  width: 50px;
+  height: 50px;
+  margin-right: 10px;
+  border-radius: 4px;
+}
+.comments-item strong {
+  margin: 5px 0;
+  display: inline-block;
+}
+.comments-item p {
+  color: #999;
+  margin: 0;
 }
