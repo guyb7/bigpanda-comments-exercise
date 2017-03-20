@@ -20,8 +20,11 @@ Vue.component('new-comment-form', {
   },
   methods: {
     onSubmit: function() {
-      this.is_submitting = true
       var comment = Object.assign({}, this.form)
+      if (comment.email.length === 0 && comment.message.length === 0) {
+        return
+      }
+      this.is_submitting = true
       axios.post('/api/add-comment', comment)
         .then(function (response) {
           this.is_submitting = false
