@@ -48,6 +48,10 @@ input, textarea {
   padding: 7px 12px;
   text-transform: uppercase;
   border-radius: 4px;
+  cursor: pointer;
+}
+.submit-comment button:hover {
+  background-color: #58b1e2;
 }
 
 .comments-feed {
