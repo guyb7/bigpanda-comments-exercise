@@ -25,7 +25,7 @@ Vue.component('new-comment-form', {
         return
       }
       this.is_submitting = true
-      axios.post('/api/add-comment', comment)
+      axios.post('./api/add-comment', comment)
         .then(function (response) {
           this.is_submitting = false
           this.form.email = ''
@@ -118,7 +118,6 @@ Vue.component('search-icon', {
         c0.779,0,1.518-0.297,2.079-0.837C56.255,54.982,56.293,53.08,55.146,51.887z M23.984,6c9.374,0,17,7.626,17,17s-7.626,17-17,17
         s-17-7.626-17-17S14.61,6,23.984,6z"/>
       </svg>
-
     </div>
   `
 })
@@ -136,7 +135,7 @@ var app = new Vue({
   },
   mounted: function() {
     this.is_fetching = true
-    axios.get('/api/feed')
+    axios.get('./api/feed')
       .then(function (response) {
         app.is_fetching = false
         app.comments = response.data.comments
