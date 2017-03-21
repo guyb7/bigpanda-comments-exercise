@@ -9,7 +9,7 @@ redisClient.on('error', (err) => {
 
 module.exports = {
   get(cb) {
-    redisClient.SMEMBERS (redis_set_name, (err, replies) => {
+    redisClient.ZRANGE(redis_set_name, 0, Date.now(), (err, replies) => {
       cb(err, replies.map(reply => {
         return JSON.parse(reply)
       }))
@@ -17,7 +17,7 @@ module.exports = {
   },
 
   add(comment, cb) {
-    redisClient.SADD(redis_set_name, JSON.stringify(comment), (err) => {
+    redisClient.ZADD(redis_set_name, Date.now(), JSON.stringify(comment), (err) => {
       cb(err)
     })
   },
